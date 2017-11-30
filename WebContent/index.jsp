@@ -4,9 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Dictonary Service</title>
+<title>Dictionary Service</title>
 </head>
 <body>
-<h1>Dictonary Service</h1>
+	<h1>Dictionary Service</h1>
+	
+	<form action="${pageContext.request.contextPath}/query" method="post">
+	  <input type="text" name="query" placeholder="Enter query here"/>
+	  <input type="submit" name="submit" value="Submit" />
+	</form>
+	
+	<script type="text/javascript">
+	   function doPost(){
+	     form1.submit();
+	   }
+	</script>
 </body>
 </html>

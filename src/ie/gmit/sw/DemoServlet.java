@@ -20,6 +20,10 @@ public class DemoServlet extends HttpServlet
 	public void doPost(HttpServletRequest request,HttpServletResponse response)  
 			throws ServletException,IOException  
 	{  
+		if(request.getParameter("query")!="")
+		{
+			
+		}
 		System.out.println(request.getParameter("query"));
 		request.getRequestDispatcher("/WEB-INF/jsp/some.jsp").forward(request, response);
 	}

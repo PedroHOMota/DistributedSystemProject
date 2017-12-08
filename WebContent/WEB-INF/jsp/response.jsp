@@ -7,12 +7,10 @@
 <title>Dictionary Service</title>
 </head>
 <body>
-	<h1>Dictionary Service</h1>
-	
-	<form action="${pageContext.request.contextPath}/query" method="post">
-	  <input type="text" name="query" placeholder="Enter query here"/>
-	  <input type="submit" name="submit" value="Submit" />
-	</form>
-	
+<h1>Dictionary Service</h1>
+Response: {}
+<form action="${pageContext.request.contextPath}" method="post">
+	  <input type="submit" name="submit" value="Make another query" />
+</form>
 </body>
 </html>

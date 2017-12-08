@@ -16,7 +16,7 @@ public class Client
 	
 	public String getDefinition(String s) throws RemoteException
 	{
-		return ms.lookup(s);
+		return ms.lookup(s.toUpperCase());
 	}
 	
 }

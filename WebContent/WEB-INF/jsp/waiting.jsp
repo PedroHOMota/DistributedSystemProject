@@ -8,7 +8,13 @@
 </head>
 <body>
 	<h1>Dictionary Service</h1>
-	Waiting for response
+	<div id="divContent">Waiting for response ...</div>
+	
+	<form action="${pageContext.request.contextPath}" method="post">
+	  <input type="submit" name="submit" value="Make another query"/>
+	</form>
+	  
+	  ${jobID}
 </body>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -19,8 +25,10 @@ function sleep() {
 	   while (currentTime + 1000 >= new Date().getTime()) {
 	   }
 	   
-	   $.get("${pageContext.request.contextPath}/query", function(data) {
-	        sleep();
+	   $.get("${pageContext.request.contextPath}/query?jobID=" +${jobID}, function(data) 
+		{
+		   	$('#divContent').html(data);
+		   	sleep();
 	    });
 	  	
 	}

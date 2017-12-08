@@ -46,6 +46,8 @@ public class Dictionary
 	public String getDefinition(String s)
 	{
 		String def=dic.get(s);
+		if(def==null)
+			def="Not Found";
 		return def;
 	}
 }

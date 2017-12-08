@@ -27,7 +27,6 @@ public class DemoServlet extends HttpServlet
 	
 	public void init()
 	{
-		System.out.println("init was called");
 		threadPool = Executors.newFixedThreadPool(1);
 
 		for(int i=0; i<1;i++)
@@ -41,7 +40,7 @@ public class DemoServlet extends HttpServlet
 						System.out.println("Iniciou thread: "+Thread.currentThread().getName());
 						try {
 							HashMap<String,String> job = inQueue.take();
-
+							Thread.sleep(5000);
 							String key=(String) job.keySet().toArray()[0];
 							String value=(String)job.values().toArray()[0];
 							HashMap<String,String> temp = new HashMap<String,String>();
@@ -73,6 +72,8 @@ public class DemoServlet extends HttpServlet
 			throws ServletException,IOException  
 	{  
 		String job = request.getParameter("jobID");
+		if(job==null)
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		System.out.println("Called the method "+job);
 		
 		for(HashMap<String,String> aux : outQueue)
@@ -80,7 +81,7 @@ public class DemoServlet extends HttpServlet
 			if(aux.containsKey(job))
 			{
 				String queryResponse=aux.get(job);
-				String html ="<p> <b>Response:</b> "+queryResponse+" </p>";
+				String html =job+"<p> <b>Response:</b> "+queryResponse+" </p>";
 				response.getWriter().write(html);
 				return;
 			}
@@ -112,7 +113,6 @@ public class DemoServlet extends HttpServlet
 		{
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
-		
 		
 		System.out.println("Redirecting...");
 		request.setAttribute("jobID", jobID);
